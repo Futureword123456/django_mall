@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+ {% block title %}
+    <title>新闻列表</title>
+ {% endblock %}
+{% block container %}
+    <!--主体-->
+    <header class="wy-header">
+      <div class="wy-header-icon-back"><span></span></div>
+      <div class="wy-header-title">新闻列表</div>
+    </header>
+    <div class="weui-content">
+      <div class="weui-cells wy-news-list">
+          {% for item in news_list %}
+        <a class="weui-cell weui-cell_access" href="{% url 'system:news_detail' item.pk %}">
+            <div class="weui-cell__bd">
+            <p>{{ item.title }}</p>
+          </div>
+          <div class="weui-cell__ft"></div>
+        </a>
+         {% endfor %}
+      </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    <script type="text/javascript" src="js/jquery.Spinner.js"></script>
+    <script>
+    </script>
+{% endblock %}
