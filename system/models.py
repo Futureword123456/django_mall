@@ -1,3 +1,5 @@
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 
 # Create your models here.
@@ -28,7 +30,7 @@ class News(models.Model):
     """新闻级通知"""
     types = models.SmallIntegerField('类型', choices=constants.NEWS_TYPES_CHOICE,
                                      default=constants.NEWS_TYPE_NEW)
-    title = models.CharField('标题',max_length=255)
+    title = models.CharField('标题', max_length=255)
     content = models.TextField('内容')
     reorder = models.SmallIntegerField('排序', default=0, help_text='数字越大，越靠前')
     start_time = models.DateTimeField('生效开始时间', null=True, blank=True)
@@ -44,3 +46,20 @@ class News(models.Model):
     class Meta:
         db_table = 'system_news'
         ordering = ['-reorder']
+
+
+class ImageFile(models.Model):
+    """图片表"""
+    img = models.ImageField('图片', upload_to='%Y%m/images/')
+    summary = models.CharField('图片名称', max_length=200)
+    content_type = models.ForeignKey(ContentType,on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+    is_valid = models.BooleanField('是否有效', default=True)
+
+    created_at = models.DateTimeField('创建时间', auto_now_add=True)
+    updated_at = models.DateTimeField('修改时间', auto_now=True)
+
+
+class Meta:
+    db_table = 'system_images'
