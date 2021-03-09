@@ -4,6 +4,7 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.db import models
 
 # Create your models here.
+from accounts.models import User
 from system.models import ImageFile
 from utils import constants
 
@@ -77,8 +78,9 @@ class Product(models.Model):
 
 class Comments(models.Model):
     """商品评论"""
-    # uid = models.UUIDField('商品ID', default=uuid.uuid4)
+    uid = models.UUIDField('商品ID', default=uuid.uuid4)
     name = models.ForeignKey(Product,on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     scoredimensions = models.IntegerField('评论纬度', default=0,
                                           choices=constants.COMMENTS_SCORE_CHOICES)
     is_nick = models.BooleanField('是否匿名', default=False)
