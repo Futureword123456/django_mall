@@ -12,7 +12,7 @@ class Classify(models.Model):
     """商品的分类"""
     uid = models.UUIDField('分类ID', default=uuid.uuid4, editable=True)
     """自己关联自己一个分类下还有分类"""
-    parent = models.ForeignKey('self', related_name='children',on_delete=models.CASCADE)
+    parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE)
     img = models.ImageField('分类图片', upload_to='classify')
     code = models.CharField('编码', max_length=32, null=True, blank=True)
     name = models.CharField('名称', max_length=12)
@@ -77,13 +77,18 @@ class Product(models.Model):
 
 class Comments(models.Model):
     """商品评论"""
+    # uid = models.UUIDField('商品ID', default=uuid.uuid4)
+    name = models.ForeignKey(Product,on_delete=models.CASCADE)
     scoredimensions = models.IntegerField('评论纬度', default=0,
                                           choices=constants.COMMENTS_SCORE_CHOICES)
     is_nick = models.BooleanField('是否匿名', default=False)
     reorder = models.SmallIntegerField('排序', default=0)
-    is_top = models.BooleanField('是否置顶',default=True)
-    comment_content = models.CharField('评论内容',max_length=256)
+    is_top = models.BooleanField('是否置顶', default=True)
+    comment_content = models.CharField('评论内容', max_length=256)
     created_at = models.DateTimeField('评论时间', auto_now_add=True)
     banners = GenericRelation(ImageFile, verbose_name='banner图',
                               related_query_name='banners')
     is_valid = models.BooleanField("是否删除", default=True)
+
+    class Meta:
+        db_table = 'mall_comments'
