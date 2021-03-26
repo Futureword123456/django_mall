@@ -31,7 +31,7 @@ class VerifyCode(object):
     def __init__(self, dj_request):
         self.dj_request = dj_request
         # 验证码长度
-        self.code_len = 4
+        self.code_len = 5
         # 验证码图片尺寸
         self.img_width = 100
         self.img_height = 30
@@ -82,15 +82,16 @@ class VerifyCode(object):
                      random.randrange(0, self.img_height / 3))
             draw.text(point, char, font=font, fill=code_color)
 
-        buf = BytesIO()
+        buf = BytesIO()         
         im.save(buf, 'gif')
         return HttpResponse(buf.getvalue(), 'image/gif')
 
     def _get_vcode(self):
         """随机生成验证码"""
-        random_str = 'ABCDEFGHIGKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789'
+        random_str = 'ABCDEFGHIGKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789'
         code_list = random.sample(list(random_str), self.code_len)
         code = ''.join(code_list)
+        print(code)
         return code
 
     def validate_code(self, code):
