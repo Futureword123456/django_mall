@@ -1,11 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
 # Create your models here.
-class User(models.Model):
+class User(AbstractUser):
     """用户的基础♂表"""
-    username = models.CharField('用户名', max_length=64)
-    password = models.CharField('密码', max_length=255)
+    # username = models.CharField('用户名', max_length=64)
+    # password = models.CharField('密码', max_length=255)
     avatar = models.ImageField('用户图像', upload_to='avatar', null=True)
     integral = models.IntegerField('用户积分', default=0)
     level = models.SmallIntegerField("用户级别")
@@ -21,7 +22,7 @@ class UserProfile(models.Model):
         (1, '男'),
         (0, '女')
     )
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     real_name = models.CharField('真实姓名', max_length=32)
     email = models.EmailField('电子邮箱', max_length=128, null=True, blank=True)
     is_email_valid = models.BooleanField('邮箱是否验证', default=False)
@@ -39,7 +40,7 @@ class UserProfile(models.Model):
 
 class UserAddress(models.Model):
     """用户的地址信息"""
-    user = models.ForeignKey(User, related_name='user_address',on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='user_address', on_delete=models.CASCADE)
     province = models.CharField('省份', max_length=32)
     city = models.CharField('市区/自治州/自治县', max_length=32)
     area = models.CharField('区域/县', max_length=32)
@@ -62,7 +63,7 @@ class UserAddress(models.Model):
 
 class LoginRecord(models.Model):
     """ 用户的登录历史 """
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     username = models.CharField('登录的账号', max_length=64)
     ip = models.CharField('IP', max_length=32)
     address = models.CharField('地址', max_length=32, null=True, blank=True)
@@ -76,7 +77,7 @@ class LoginRecord(models.Model):
 
 class PasswdChangeLog(models.Model):
     """ 用户的密码修改历史 """
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     username = models.CharField('修改的账号', max_length=64)
     ip = models.CharField('IP', max_length=32)
     address = models.CharField('地址', max_length=32, null=True, blank=True)

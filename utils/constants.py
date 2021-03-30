@@ -3,7 +3,8 @@
 # @Author : yang
 # @Email : 2635681517@qq.com
 # @File : constants.py
-
+# 登录后存储在session中的用户ID
+LOGIN_SESSION_ID = 'user_id'
 """系统模块的轮播图"""
 SLIDER_TYPES_INDEX = 11
 SLIDER_TYPES_CHOICES = (

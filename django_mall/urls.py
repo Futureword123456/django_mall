@@ -26,7 +26,9 @@ urlpatterns = [
     # 商品详情
     url(r'^mall/',include('mall.urls',namespace='mall')),
     # 系统模块
-    url(r'^system/',include('system.urls',namespace='sys')),
+    url(r'^accounts/',include('accounts.urls',namespace='accounts')),
+    # 系统模块
+    url(r'^system/',include('system.urls',namespace='system')),
 
 
 ]

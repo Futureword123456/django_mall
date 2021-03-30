@@ -38,6 +38,11 @@
         >
       </div>
     </header>
+    {% if user.is_authenticated%}
+    <h3 style="text-align: left">欢迎您:{{ user.nickname }}</h3>
+    {% else %}
+        您未登录 <a href="{% url 'accounts:user_login' %}">请登录</a>
+    {% endif %}
     <!--主体-->
     <div class="weui-content">
       <!--顶部轮播-->

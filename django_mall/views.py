@@ -8,6 +8,7 @@ import datetime
 from django.shortcuts import render
 
 # 定义index函数重定向到html文件
+from accounts.models import User
 from system.models import Slider, News
 from utils import constants
 
@@ -17,12 +18,17 @@ def index(request):
     slider_list = Slider.objects.filter(types=constants.SLIDER_TYPES_INDEX)
     # 首页的新闻
     now_time = datetime.datetime.now()
-
+    # 从session获取用户id
+    # user_id = request.session[constants.LOGIN_SESSION_ID]
+    # print(user_id)
+    # user = User.objects.get(pk=user_id)
+    # print(user)
     news_list = News.objects.filter(types=constants.NEWS_TYPE_NEW, is_top=True, is_valid=True,
                                     start_time__lte=now_time,
                                     end_time__gte=now_time,
                                     )
     return render(request, 'index.html', {
         'slider_list': slider_list,
-        'news_list': news_list
+        'news_list': news_list,
+        # 'user': user
     })

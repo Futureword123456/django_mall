@@ -44,7 +44,7 @@ ul, ol, li, dl, dd { margin: 0; padding: 0; }
 ul, ol { list-style: none outside none; }
 
 .container{max-width: 768px;}
-
+.errorlist {color: #f00;}
 .pd-10{padding:10px;}
 
 .mg-t-10{margin-top:10px;}
@@ -356,20 +356,28 @@ header,.weui-navbar{
 .com-button a {margin: 0 auto;display: block;width: 90%;height: 39px;line-height: 39px;background: #fff;border: 1px solid #ff4d55;border-radius: 4px;color: #ff4d55;font-size: 14px;}
 
 /*--login---*/
+/*.lg-header{padding: 10px 20px 15px 10px;}*/
 .login-box{width:100%;overflow:hidden;margin:0 auto;}
-.lg-title{width:100%;height:auto;overflow:hidden;font-size:20px;text-align:center; line-height:100px; color:#fff;}
+.lg-title{overflow:hidden;font-size:20px;text-align:center; line-height:50px; color:#fff;}
+.account{color: #ffffff;font-size:20px;text-align: left; }
+.verify{color: #ffffff;font-size:20px;margin-right: auto }
+
+/*.lg-account{font-size:20px;text-align:left;line-height:10px; color: #ffffff;margin-top: 20px;}*/
+/*.lg{font-size:20px;text-align: left;color: #ffffff;}*/
 
 .login-form{width:100%;height:auto; padding:20px 30px; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; -o-box-sizing:border-box;}
-.common-div{width:100%;height:40px;overflow:hidden;border-radius:4px;-webkit-border-radius:4px;margin-bottom:20px; position:relative;}
-.login-user-name,.login-user-pasw{background-color:rgba(255,255,255,0.1);}
+.common-div{width:100%;height:40px;overflow:visible;border-radius:4px;-webkit-border-radius:4px;margin-bottom:20px; position:relative;}
+.login-user-name,.login-user-pasw{background-color:rgba(255,255,255,0.1);border-radius: 8px}
+.login-user-code {display: flex;}
+.login-user-code input{height:40px; padding:6px 10px 6px 6px;background-color:transparent;border:none;outline:none;font-size:15px;color:#fff; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; -o-box-sizing:border-box; position:absolute; left:0; top:0; font-family:Helvetica,STHeiti STXihei, Microsoft JhengHei, Microsoft YaHei, Arial;}
 .common-div >.common-icon{float:left;width:20px;height:20px;overflow:hidden;margin:10px;}
 .common-div >.common-icon img{width:100%;height:auto;}
 .common-div >input{width:100%;height:40px; padding:6px 10px 6px 46px;background-color:transparent;border:none;outline:none;font-size:15px;color:#fff; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; -o-box-sizing:border-box; position:absolute; left:0; top:0; font-family:Helvetica,STHeiti STXihei, Microsoft JhengHei, Microsoft YaHei, Arial;}
-.login-btn{background-color:#e21323;color:#fff;font-size:16px;text-align:center;line-height:40px; display:block;}
-.forgets{width:100%;height:auto;margin:0 auto; padding:0 30px;  box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; -o-box-sizing:border-box;}
-.forgets >a{color:#fff;opacity:0.2;font-size:14px;}
+.login-btn{background-color:#e21323;border-radius:20px; color:#fff;font-size:16px;text-align:center;line-height:40px; display:block;}
+.forgets{width:100%;height:auto;margin:0 auto; color:#ffffff;padding:0 30px;  box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; -o-box-sizing:border-box;}
+.forgets >a{color:#ffffff;opacity:0.2;font-size:14px;}
 .forgets >a +a{float:right;}
-.login-oth-btn{border:1px solid #9598a5; color:#9598a5;font-size:16px;text-align:center;line-height:40px; display:block;}
+.login-oth-btn{border:1px solid #9598a5;border-radius:20px;  color:#9598a5;font-size:16px;text-align:center;line-height:40px; display:block;}
 
 .wy-news-list{font-size:15px; color:#232323;}
 .wy-news-time{font-size:12px; color:#888;}

@@ -11,34 +11,33 @@
       name="viewport"
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
-
     <link rel="stylesheet" href="/static/lib/weui.min.css" />
     <link rel="stylesheet" href="/static/css/jquery-weui.css" />
     <link rel="stylesheet" href="/static/css/style.css" />
-  {% block title %}
-      <meta name="description" content=""/>
-      {# 页面的头部信息，可以添加头部标签css，js, <title> #}
-     <title>积分商城</title>
+    {% block title %}
+       <meta name="description" content=""/>
+       <title>积分商城首页</title>
+       {# 页面的头部信息，可添加头部标签，css,js,<title> #}
     {% endblock %}
   </head>
   <body ontouchstart class="container">
     {% block container %}
-        {# 页面的内容区域 #}
+     {# 页面的内容区域 #}
     {% endblock %}
+
+
 
     <script src="/static/lib/jquery-2.1.4.js"></script>
     <script src="/static/lib/fastclick.js"></script>
     <script>
-        //解决移动端手机上事件的穿透
+        // 手机端事件穿透
       $(function() {
         FastClick.attach(document.body);
       });
     </script>
     <script src="/static/js/jquery-weui.js"></script>
-    <script src="/static/js/swiper.js"></script>
     {% block footer %}
-    {# 页面的底部，可以用来 放html，新的js #}
-
+    {#   页面底部，可以用来放html片段，可以添加新的js     #}
     {% endblock %}
   </body>
 </html>
